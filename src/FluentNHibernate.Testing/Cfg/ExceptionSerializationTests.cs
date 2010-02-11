@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using FluentNHibernate.Cfg;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.Cfg

@@ -17,6 +17,7 @@ using FluentNHibernate.Conventions.Instances;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Testing.Automapping;
 using FluentNHibernate.Testing.DomainModel;
+using FluentNHibernate.Testing.Utils;
 using NHibernate.Cfg;
 using NUnit.Framework;
 using SuperTypes = FluentNHibernate.Automapping.TestFixtures.SuperTypes;

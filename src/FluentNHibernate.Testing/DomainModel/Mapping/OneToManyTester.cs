@@ -7,6 +7,7 @@ using FluentNHibernate.Conventions.Instances;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Mapping;
 using FluentNHibernate.MappingModel.Collections;
+using FluentNHibernate.Testing.Utils;
 using Iesi.Collections.Generic;
 using NHibernate.Cfg;
 using NUnit.Framework;
@@ -34,6 +35,7 @@ namespace FluentNHibernate.Testing.DomainModel.Mapping
         public virtual ISet<ChildObject> SetOfChildren { get; set; }
         public virtual HashSet<ChildObject> HashSetOfChildren { get; set; }
         public virtual IList<ChildObject> BagOfChildren { get; set; }
+        public virtual IList<string> BagOfStrings { get; set; }
         public virtual IList<ChildObject> ListOfChildren { get; set; }
         public virtual IDictionary<string, ChildObject> MapOfChildren { get; set; }
         public virtual ChildObject[] ArrayOfChildren { get; set; }
@@ -388,7 +390,7 @@ namespace FluentNHibernate.Testing.DomainModel.Mapping
         public void CanSetAsElement() 
         { 
             new MappingTester<OneToManyTarget>() 
-                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren).Element("columnName")) 
+                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren)) 
                 .Element("class/bag/element").Exists(); 
         } 
  
@@ -396,26 +398,34 @@ namespace FluentNHibernate.Testing.DomainModel.Mapping
         public void ElementHasCorrectType() 
         { 
             new MappingTester<OneToManyTarget>() 
-                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren).Element("columnName")) 
+                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren)) 
                 .Element("class/bag/element").HasAttribute("type", typeof(string).AssemblyQualifiedName); 
         } 
  
         [Test] 
-        public void ElementHasCorrectColumnName() 
+        public void ElementHasCorrectDefaultColumnName() 
         { 
             new MappingTester<OneToManyTarget>() 
-                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren).Element("columnName")) 
-                .Element("class/bag/element/column").HasAttribute("name", "columnName"); 
+                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren)) 
+                .Element("class/bag/element/column").HasAttribute("name", "value"); 
         }
 
         [Test]
-        public void ElementCallsCustomMappingHandler()
+        public void ElementHasCorrectOverriddenColumnName()
         {
-            var called = false;
             new MappingTester<OneToManyTarget>()
-                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren).Element("columnName", elementPart => called = true));
-            called.ShouldBeTrue();
+                .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren).ValueColumn("columnName"))
+                .Element("class/bag/element/column").HasAttribute("name", "columnName");
         }
+
+        //[Test]
+        //public void ElementCallsCustomMappingHandler()
+        //{
+        //    var called = false;
+        //    new MappingTester<OneToManyTarget>()
+        //        .ForMapping(m => m.HasMany(x => x.ListOfSimpleChildren).Element("columnName", elementPart => called = true));
+        //    called.ShouldBeTrue();
+        //}
 
         [Test]
         public void OneToManyMapping_with_private_backing_field()

@@ -3,8 +3,8 @@ using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.Testing.DomainModel;
 using FluentNHibernate.Utils.Reflection;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
-using Is=FluentNHibernate.Conventions.AcceptanceCriteria.Is;
 
 namespace FluentNHibernate.Testing.ConventionsTests.AcceptanceCriteria
 {

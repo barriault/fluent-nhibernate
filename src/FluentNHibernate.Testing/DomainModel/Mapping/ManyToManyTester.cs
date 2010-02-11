@@ -6,6 +6,7 @@ using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Instances;
 using FluentNHibernate.Mapping;
 using FluentNHibernate.MappingModel.Collections;
+using FluentNHibernate.Testing.Utils;
 using Iesi.Collections.Generic;
 using NUnit.Framework;
 

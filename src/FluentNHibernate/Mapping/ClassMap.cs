@@ -356,6 +356,12 @@ namespace FluentNHibernate.Mapping
             get { return schemaAction; }
         }
 
+        internal object Something
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
         public void CheckConstraint(string constraint)
         {
             attributes.Set(x => x.Check, constraint);

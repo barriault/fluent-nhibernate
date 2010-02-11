@@ -1,5 +1,6 @@
 using FluentNHibernate.Mapping;
 using FluentNHibernate.Testing.DomainModel.Mapping;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.FluentInterfaceTests

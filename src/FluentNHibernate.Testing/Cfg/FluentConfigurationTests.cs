@@ -7,6 +7,7 @@ using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Testing.DomainModel;
 using FluentNHibernate.Testing.Fixtures.Basic;
 using FluentNHibernate.Testing.Fixtures.MixedMappingsInSameLocation;
+using FluentNHibernate.Testing.Utils;
 using NHibernate.Cfg;
 using NUnit.Framework;
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.Collections;
 using FluentNHibernate.Utils;
@@ -8,14 +9,16 @@ namespace FluentNHibernate.Mapping
 {
     public class ElementPart
     {
-        private readonly Type entity;
+        private readonly Type containingEntityType;
         private readonly AttributeStore<ElementMapping> attributes = new AttributeStore<ElementMapping>();
         private readonly ColumnMappingCollection<ElementPart> columns;
 
-        public ElementPart(Type entity)
+        public ElementPart(Type containingEntityType, Type elementType)
         {
-            this.entity = entity;
-            columns = new ColumnMappingCollection<ElementPart>(this);            
+            this.containingEntityType = containingEntityType;
+            columns = new ColumnMappingCollection<ElementPart>(this);
+
+            attributes.SetDefault(x => x.Type, new TypeReference(elementType));
         }
 
         public ElementPart Column(string elementColumnName)
@@ -38,11 +41,16 @@ namespace FluentNHibernate.Mapping
         public ElementMapping GetElementMapping()
         {
             var mapping = new ElementMapping(attributes.CloneInner());
-            mapping.ContainingEntityType = entity;
+            mapping.ContainingEntityType = containingEntityType;
 
-            foreach (var column in Columns)
-                mapping.AddColumn(column);
-
+            if (Columns.Any())
+            {
+                foreach (var column in Columns)
+                    mapping.AddColumn(column);
+            }
+            else
+                mapping.AddDefaultColumn(new ColumnMapping { Name = "value" });
+            
             return mapping;
         }
 

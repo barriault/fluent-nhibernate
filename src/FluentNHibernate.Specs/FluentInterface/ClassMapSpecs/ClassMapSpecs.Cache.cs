@@ -1,4 +1,3 @@
-using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.ClassBased;
 using FluentNHibernate.Specs.FluentInterface.Fixtures;
 using Machine.Specifications;

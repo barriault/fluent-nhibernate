@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using FluentNHibernate.Automapping;
-using FluentNHibernate.Mapping;
 using FluentNHibernate.MappingModel.ClassBased;
 using FluentNHibernate.Utils.Reflection;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 using System.Linq.Expressions;
 

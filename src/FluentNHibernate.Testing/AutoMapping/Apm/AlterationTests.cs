@@ -1,6 +1,7 @@
 ﻿using FluentNHibernate.Automapping;
 using FluentNHibernate.Automapping.Alterations;
 using FluentNHibernate.Automapping.TestFixtures;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 using Rhino.Mocks;
 

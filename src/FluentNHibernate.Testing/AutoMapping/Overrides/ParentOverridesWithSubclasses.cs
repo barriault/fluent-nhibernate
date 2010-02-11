@@ -4,6 +4,7 @@ using FluentNHibernate.Automapping;
 using FluentNHibernate.Automapping.Alterations;
 using FluentNHibernate.Automapping.TestFixtures;
 using FluentNHibernate.Testing.Fixtures.AutoMappingAlterations.Model;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.AutoMapping.Overrides

@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using FluentNHibernate.MappingModel;
 using NUnit.Framework;
 
-namespace FluentNHibernate.Testing
+namespace FluentNHibernate.Testing.Utils
 {
     public delegate void MethodThatThrows();
 
@@ -30,6 +31,11 @@ namespace FluentNHibernate.Testing
         {
             Assert.AreEqual(expected, actual);
             return expected;
+        }
+
+        public static void ShouldEqual(this TypeReference actual, Type expected)
+        {
+            Assert.AreEqual(actual.GetUnderlyingSystemType(), expected);
         }
 
         public static object ShouldNotEqual(this object actual, object expected)

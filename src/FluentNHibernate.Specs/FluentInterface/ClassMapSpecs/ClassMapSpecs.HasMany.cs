@@ -1,4 +1,3 @@
-using System.Linq;
 using FluentNHibernate.MappingModel.ClassBased;
 using FluentNHibernate.Specs.FluentInterface.Fixtures;
 using Machine.Specifications;
@@ -11,9 +10,6 @@ namespace FluentNHibernate.Specs.FluentInterface.ClassMapSpecs
             mapping = map_as_class<EntityWithCollections>(m => m.HasMany(x => x.BagOfChildren));
 
         Behaves_like<ClasslikeBagBehaviour> a_bag_in_a_classlike_mapping;
-
-        It should_use_the_containing_type_name_suffixed_with_id_as_the_key_column_name = () =>
-            mapping.Collections.Single().Key.Columns.Single().Name.ShouldEqual("EntityWithCollections_id");
 
         protected static ClassMapping mapping;
     }
@@ -58,32 +54,6 @@ namespace FluentNHibernate.Specs.FluentInterface.ClassMapSpecs
             mapping = map_as_class<EntityWithCollections>(m => m.HasMany(x => x.ArrayOfChildren).AsArray(x => x.Position));
 
         Behaves_like<ClasslikeArrayBehaviour> an_array_in_a_classlike_mapping;
-
-        protected static ClassMapping mapping;
-    }
-
-    public class when_class_map_is_told_to_map_an_has_many_from_a_field : ProviderSpec
-    {
-        Because of = () =>
-            mapping = map_as_class<EntityWithFieldCollections>(m => m.HasMany(x => x.BagOfChildren));
-
-        Behaves_like<ClasslikeBagBehaviour> a_bag_in_a_classlike_mapping;
-
-        It should_use_the_containing_type_name_suffixed_with_id_as_the_key_column_name = () =>
-            mapping.Collections.Single().Key.Columns.Single().Name.ShouldEqual("EntityWithFieldCollections_id");
-
-        protected static ClassMapping mapping;
-    }
-
-    public class when_class_map_is_told_to_map_an_has_many_using_reveal : ProviderSpec
-    {
-        Because of = () =>
-            mapping = map_as_class<EntityWithCollections>(m => m.HasMany<ChildTarget>(Reveal.Property<EntityWithCollections>("BagOfChildren")));
-
-        Behaves_like<ClasslikeBagBehaviour> a_bag_in_a_classlike_mapping;
-
-        It should_use_the_containing_type_name_suffixed_with_id_as_the_key_column_name = () =>
-            mapping.Collections.Single().Key.Columns.Single().Name.ShouldEqual("EntityWithCollections_id");
 
         protected static ClassMapping mapping;
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Utils.Reflection;
+using FluentNHibernate.Testing.Utils;
 using Iesi.Collections.Generic;
 using NUnit.Framework;
 

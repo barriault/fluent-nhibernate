@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 using System.Xml.Linq;
 

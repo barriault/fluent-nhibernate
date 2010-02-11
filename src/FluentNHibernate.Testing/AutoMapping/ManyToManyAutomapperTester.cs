@@ -1,10 +1,9 @@
 using FluentNHibernate.Automapping;
-using FluentNHibernate.Mapping;
 using FluentNHibernate.MappingModel.ClassBased;
 using FluentNHibernate.Testing.Automapping.ManyToMany;
 using FluentNHibernate.Utils.Reflection;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
-using Rhino.Mocks;
 
 namespace FluentNHibernate.Testing.Automapping
 {

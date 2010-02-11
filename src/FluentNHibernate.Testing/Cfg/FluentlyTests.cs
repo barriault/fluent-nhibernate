@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Cfg;
+using FluentNHibernate.Testing.Utils;
 using NHibernate.Cfg;
 using NUnit.Framework;
 

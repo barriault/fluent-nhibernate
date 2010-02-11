@@ -1,10 +1,10 @@
 using System;
 using System.Linq.Expressions;
-using System.Reflection;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.Testing.DomainModel;
 using FluentNHibernate.Utils.Reflection;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.ConventionsTests.Inspection

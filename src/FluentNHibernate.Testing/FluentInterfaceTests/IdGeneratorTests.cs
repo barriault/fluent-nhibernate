@@ -4,6 +4,7 @@ using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Instances;
 using FluentNHibernate.Mapping;
 using FluentNHibernate.MappingModel.Identity;
+using FluentNHibernate.Testing.Utils;
 using NHibernate.Engine;
 using NHibernate.Id;
 using NUnit.Framework;

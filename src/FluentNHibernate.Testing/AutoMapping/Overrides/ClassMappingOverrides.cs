@@ -5,6 +5,7 @@ using System.Text;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.ClassBased;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.AutoMapping.Overrides

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 using Rhino.Mocks;
 using NHibernate;

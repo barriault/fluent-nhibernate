@@ -5,6 +5,7 @@ using System.Text;
 using FluentNHibernate.Conventions.AcceptanceCriteria;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.MappingModel;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 using Is=FluentNHibernate.Conventions.AcceptanceCriteria.Is;
 

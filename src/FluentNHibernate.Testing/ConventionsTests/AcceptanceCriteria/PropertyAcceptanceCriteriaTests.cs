@@ -4,6 +4,7 @@ using FluentNHibernate.Conventions.AcceptanceCriteria;
 using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.Testing.DomainModel;
+using FluentNHibernate.Testing.Utils;
 using TestFixture = NUnit.Framework.TestFixtureAttribute;
 using SetUp = NUnit.Framework.SetUpAttribute;
 using Test = NUnit.Framework.TestAttribute;

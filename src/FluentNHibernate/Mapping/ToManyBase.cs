@@ -304,10 +304,14 @@ namespace FluentNHibernate.Mapping
             indexMapping = indexPart.GetIndexMapping();
         }
 
+        public ElementPart Element()
+        {
+            return (elementPart = new ElementPart(typeof(T), typeof(TChild)));
+        }
+
         public T Element(string columnName)
         {
-            elementPart = new ElementPart(typeof(T));
-            elementPart.Type<TChild>();
+            elementPart = Element();
 
             if (!string.IsNullOrEmpty(columnName))
                 elementPart.Column(columnName);

@@ -11,6 +11,8 @@ using FluentNHibernate.MappingModel.Collections;
 using FluentNHibernate.MappingModel.Identity;
 using FluentNHibernate.Testing.DomainModel;
 using FluentNHibernate.Utils.Reflection;
+using FluentNHibernate.Testing.Utils;
+using FluentNHibernate.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.ConventionsTests.Inspection

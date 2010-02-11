@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FluentNHibernate.Cfg.Db;
+using FluentNHibernate.Testing.Utils;
 using NHibernate.Cache;
 using NUnit.Framework;
 

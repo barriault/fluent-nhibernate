@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Mapping;
+using FluentNHibernate.Testing.Utils;
 using NHibernate.Cfg;
 using NUnit.Framework;
 

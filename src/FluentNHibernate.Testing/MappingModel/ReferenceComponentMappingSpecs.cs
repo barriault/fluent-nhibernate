@@ -2,6 +2,7 @@
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.ClassBased;
 using FluentNHibernate.MappingModel.Collections;
+using FluentNHibernate.Testing.Utils;
 using FluentNHibernate.Utils;
 using NUnit.Framework;
 

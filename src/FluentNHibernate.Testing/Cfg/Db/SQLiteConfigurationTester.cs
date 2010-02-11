@@ -1,4 +1,5 @@
 using FluentNHibernate.Cfg.Db;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.Cfg.Db

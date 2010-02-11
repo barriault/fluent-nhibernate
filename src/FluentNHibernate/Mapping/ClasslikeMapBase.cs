@@ -8,8 +8,41 @@ using FluentNHibernate.Utils;
 
 namespace FluentNHibernate.Mapping
 {
+    public class HasManyBuilderFactory
+    {
+        readonly Type containingEntityType;
+        readonly Action<ICollectionMappingProvider> addCollection;
+
+        public HasManyBuilderFactory(Type containingEntityType, Action<ICollectionMappingProvider> addCollection)
+        {
+            this.containingEntityType = containingEntityType;
+            this.addCollection = addCollection;
+        }
+
+        public HasManyElementBagBuilder<TChild> has_many_elements_in_a_bag<TChild>(Member member)
+        {
+            HasManyElementBagBuilder<TChild> builder = new HasManyElementBagBuilderImpl<TChild>(containingEntityType, member);
+
+            addCollection(builder);
+
+            return builder;
+        }
+
+        public HasManyElementBagBuilder<TChild> has_many_elements_in_a_bag<TChild>(Member member, string valueColumn)
+        {
+            HasManyElementBagBuilder<TChild> builder = new HasManyElementBagBuilderImpl<TChild>(containingEntityType, member);
+
+            builder.ValueColumn(valueColumn);
+            addCollection(builder);
+
+            return builder;
+        }
+    }
+
     public abstract class ClasslikeMapBase<T>
     {
+        readonly HasManyBuilderFactory hasManyBuilderFactory;
+
         protected readonly IList<IPropertyMappingProvider> properties = new List<IPropertyMappingProvider>();
         protected readonly IList<IComponentMappingProvider> components = new List<IComponentMappingProvider>();
         protected readonly IList<IOneToOneMappingProvider> oneToOnes = new List<IOneToOneMappingProvider>();
@@ -19,6 +52,11 @@ namespace FluentNHibernate.Mapping
         protected readonly IList<IAnyMappingProvider> anys = new List<IAnyMappingProvider>();
         protected readonly IList<IFilterMappingProvider> filters = new List<IFilterMappingProvider>();
         protected readonly IList<IStoredProcedureMappingProvider> storedProcedures = new List<IStoredProcedureMappingProvider>();
+
+        protected ClasslikeMapBase()
+        {
+            hasManyBuilderFactory = new HasManyBuilderFactory(typeof(T), collections.Add);
+        }
 
         public PropertyPart Map(Expression<Func<T, object>> expression)
         {
@@ -171,6 +209,16 @@ namespace FluentNHibernate.Mapping
             components.Add(part);
 
             return part;
+        }
+
+        public HasManyElementBagBuilder<string> HasMany(Expression<Func<T, IEnumerable<string>>> member)
+        {
+            return hasManyBuilderFactory.has_many_elements_in_a_bag<string>(member.ToMember());
+        }
+
+        public HasManyElementBagBuilder<string> HasMany(Expression<Func<T, IEnumerable<string>>> member, string valueColumn)
+        {
+            return hasManyBuilderFactory.has_many_elements_in_a_bag<string>(member.ToMember(), valueColumn);
         }
 
         /// <summary>

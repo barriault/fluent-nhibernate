@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 using FluentNHibernate.Mapping;
 using FluentNHibernate.Testing.DomainModel.Mapping;
@@ -15,7 +16,7 @@ namespace FluentNHibernate.Testing.FluentInterfaceTests
         [Test]
         public void CanSetLength()
         {
-            var part = new ElementPart(typeof(MappedObject));
+            var part = new ElementPart(typeof(MappedObject), typeof(string));
             part.Length(50);
 
             ElementMapping elementMapping = part.GetElementMapping();
@@ -25,7 +26,7 @@ namespace FluentNHibernate.Testing.FluentInterfaceTests
         [Test]
         public void CanSetFormula()
         {
-            var part = new ElementPart(typeof(MappedObject));
+            var part = new ElementPart(typeof(MappedObject), typeof(string));
             part.Formula("formula");
 
             ElementMapping elementMapping = part.GetElementMapping();

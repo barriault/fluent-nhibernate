@@ -2,11 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using FluentNHibernate.Mapping.Providers;
 using FluentNHibernate.MappingModel;
 using FluentNHibernate.MappingModel.Collections;
 
 namespace FluentNHibernate.Mapping
 {
+    public interface HasManyElementBagBuilder<TChild> : ICollectionMappingProvider
+    {
+        HasManyElementBagBuilder<TChild> ValueColumn(string valueColumn);
+    }
+
+    public class HasManyElementBagBuilderImpl<TChild> : HasManyBagBuilder<TChild>,
+        HasManyElementBagBuilder<TChild>
+    {
+        public HasManyElementBagBuilderImpl(Type entity, Member property)
+            : base(entity, property)
+        {
+            Element();
+        }
+
+        public HasManyElementBagBuilder<TChild> ValueColumn(string valueColumn)
+        {
+            Element(valueColumn);
+            return this;
+        }
+    }
+
+    public abstract class HasManyBagBuilder<TChild> : OneToManyPart<TChild>
+    {
+        protected HasManyBagBuilder(Type entity, Member property)
+            : base(entity, property)
+        {
+            AsBag();
+        }
+    }
+
     public class OneToManyPart<TChild> : ToManyBase<OneToManyPart<TChild>, TChild, OneToManyMapping>
     {
         private readonly Type entity;

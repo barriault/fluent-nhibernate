@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Testing.Automapping.Apm;
+using FluentNHibernate.Testing.Utils;
 using NUnit.Framework;
 
 namespace FluentNHibernate.Testing.AutoMapping.Apm
